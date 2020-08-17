@@ -1,0 +1,49 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot_mybatis.mapper.UserMapper">
+    <resultMap id="result" type="com.springboot_mybatis.entity.User">
+        <result property="name" column="name" />
+        <result property="password" column="password"/>
+        <result property="jurisdiction" column="jurisdiction"/>
+
+    </resultMap>
+    <!--    登录成功后，全部查询  -->
+    <select id="ListUser" resultMap="result">
+        SELECT * FROM user
+    </select>
+
+    <!--   通过账号查询是否存在( 注册时查询账号是否存在)   -->
+    <select id="findUserByName" resultMap="result">
+        SELECT * FROM user where name=#{name}
+    </select>
+
+    <!--    通过账号、密码查询是否存在(登录时查询账户和密码是否对应)     -->
+    <select id="findUserByPassword" resultMap="result">
+        SELECT * FROM user where name=#{name} AND password=#{password}
+    </select>
+
+    <!--    通过账号和身份查询数据是否存在     -->
+    <select id="findNameByJurisdiction" resultMap="result">
+        SELECT * FROM user where name=#{name} AND jurisdiction=#{jurisdiction}
+    </select>
+
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="com.springboot_mybatis.entity.User"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO user(id,name,password,jurisdiction)
+        VALUES (#{id},#{name, jdbcType=VARCHAR},#{password, jdbcType=VARCHAR},#{jurisdiction} )
+    </insert>
+
+    <!--通过id删除用户-->
+    <delete id="delete" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+
+    <!--通过账号来更改密码-->
+    <update id="Update" parameterType="com.springboot_mybatis.entity.User">
+    update user set user.password=#{password1} where user.name=#{name}
+    </update>
+
+</mapper>

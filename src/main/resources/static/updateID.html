@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>注册系统</title>
+    <style>
+        .center{
+            text-align: center;
+        }
+
+        .login{
+            position: absolute;
+            left: 855px;
+            top: 215px;
+        }
+        .cz{
+            position: absolute;
+            left: 637px;
+            top: 215px;
+        }
+    </style>
+    <script>
+        function myFunction(){
+        var x=document.forms["name-password"]["username"].value;
+        var xy=document.forms["name-password"]["password"].value;
+        var y=document.forms["name-password"]["password1"].value;
+        var z=document.forms["name-password"]["password2"].value;
+            if (x == null || x == "") {
+                alert("账号必须填写！！！");
+                return false;
+            } else if (xy == null || xy == "") {
+                alert("旧密码必须填写！！！");
+                return false;
+            } else if (y == null || y == "") {
+                alert("新密码必须填写！！！");
+                return false;
+            } else if (y != z) {
+                alert("前后新密码不相同！！！")
+                return false;
+            } else {
+                alert("验证账号信息中......")
+                return true;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<a href="/index.html"><button>返回登录页面</button></a>
+<div class="center">
+<header class="bar-nav">
+    <h1 class="title">密码修改系统</h1>
+</header>
+<div class="zc">
+    <form action="/update" method="post" onsubmit="return myFunction()" name="name-password">
+        <b>填写用户名</b>：<input type="test" name="username" placeholder="user name"><br/>
+        <b>填写旧密码</b>：<input type="test" name="password" placeholder="password"><br/>
+        <b>填写新密码</b>：<input type="password" name="password1" placeholder="password1"><br/>
+        <b>确定新密码</b>：<input type="password" name="password2" placeholder="password2"><br/>
+        <input class="login" type="submit" value="修改"/>
+    </form>
+
+    <form action="/updateID.html">
+        <input class="cz" type="submit" value="重置">
+    </form>
+    <br/><h4>注意：</h4>由于用的SQL语句是用name来查找修改，不支持返回，所以修改成功后，请重新访问登录系统！！！
+</div>
+</div>
+</body>
+</html>

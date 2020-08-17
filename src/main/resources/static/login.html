@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>注册系统</title>
+    <style>
+        .center{
+            text-align: center;
+        }
+
+        .login{
+            position: absolute;
+            left: 848px;
+            top: 195px;
+        }
+        .cz{
+            position: absolute;
+            left: 645px;
+            top: 195px;
+        }
+    </style>
+    <script>
+        function myFunction(){
+            var x=document.forms["name-password"]["username"].value;
+            var y=document.forms["name-password"]["password1"].value;
+            var z=document.forms["name-password"]["password2"].value;
+            if (x.length <= 11 && 6 <= x.length) {
+                if (x == null || x == "") {
+                    alert("账号必须填写！！！");
+                    return false;
+                } else if (y == null || y == "") {
+                    alert("密码必须填写！！！");
+                    return false;
+                } else if (y != z) {
+                    alert("前后密码不相同！！！")
+                    return false;
+                } else {
+                    alert("验证账号信息中......")
+                    return true;
+                }
+            } else {
+                alert("账号请按规定创建！！！");
+                return false;
+            }
+        }
+    </script>
+
+</head>
+<body>
+<a href="/index.html"><button>返回登录页面</button></a>
+<div class="center">
+<header class="bar-nav">
+    <h1 class="title">账号注册系统</h1>
+</header>
+<div class="zc">
+    <form action="/insert" method="post" onsubmit="return myFunction()" name="name-password">
+        <b>创建账号</b>：<input type="text" id="username" name="username" placeholder="只可填写6~11位username" ><br/>
+        <b>创建密码</b>：<input type="test" name="password1" placeholder="password1"><br/>
+        <b>确定密码</b>：<input type="test" name="password2" placeholder="password2"><br/>
+        <input class="login" type="submit" value="创建"/>
+    </form>
+
+    <form action="/login.html">
+        <input class="cz" type="submit" value="重置">
+    </form>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style>
+    </style>
+</head>
+<body>
+<a href="/index.html"><button>返回登录页面</button></a>
+<div align=center>
+    <h1>欢迎您，我的管理员，爱你么么哒( • 人 • )ԅ(≖ᴗ≖ԅ)耍流氓</h1>
+    <table width="300" border="1">
+        <tr>
+            <th>ID</th>
+            <th>用户账号</th>
+            <th>用户密码</th>
+            <th>身份</th>
+        </tr>
+        <tr th:each="user:${userList}" align="center" >
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.jurisdiction}"></td>
+        </tr>
+    </table>
+    <form action="/delete">
+        <b>请输入需要删除的用户ID：</b><input type="text" name="id" placeholder="ID">
+        <input type="submit" value="删除"><br/>
+        <h4>注意：</h4>由于该小白水平有限，所以无论删除成功或失败，都要重新登录！！！
+    </form>
+</div>
+</body>
+</html>

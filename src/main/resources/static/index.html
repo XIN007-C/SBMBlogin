@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>登录系统</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        .item-input{
+            position: relative;
+            left: 40px;
+        }
+        .login{
+            position: absolute;
+            left: 840px;
+            top: 158px;
+        }
+        .login_up{
+            position: absolute;
+            left: 890px;
+            top: 158px;
+        }
+        .dl{
+            position: absolute;
+            left: 645px;
+            top: 158px;
+        }
+        .jurisdiction{
+            position: absolute;
+            left: 700px;
+            top: 158px;
+        }
+        .item-input{
+            position: absolute;
+            left: 892px;
+            top: 107px;
+        }
+    </style>
+    <script type="text/javascript">
+        function refresh() {
+            document.getElementById('captcha_img').src="/mykaptcha?"+Math.random();
+        }
+
+        function myFunction(){
+            var x=document.forms["name-password"]["username"].value;
+            var y=document.forms["name-password"]["password"].value;
+            if(x==null || x==""){
+                alert("账号必须填写");
+                return false;
+            }
+            else if(y==null || y==""){
+                alert("密码必须填写");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="page-group">
+    <div id="page-label-input" class="page">
+        <header class="bar-nav">
+            <h1 class="title">登录系统</h1>
+        </header>
+            <form action="/userList" method="post" onsubmit="return myFunction()" name="name-password">
+            <b>用户账号</b>：<input type="text" name="username" placeholder="user name"><br/>
+            <b>用户密码</b>：<input type="password" name="password" placeholder="password"><br/>
+            <b>验证输入</b>：<input type="text" placeholder="请输入验证码" name="verifyCodeActual">
+            <div class="item-input">
+                <img id="captcha_img" alt="点击更换" title="点击更换" onclick="refresh()" src="/mykaptcha" />
+            </div>
+            <div class="dl">
+                <input type="submit" value="登录" />
+            </div>
+
+                <div class="jurisdiction">
+                    <b>身份：</b>
+                    <select name="jurisdiction">
+                        <option value="用户">普通用户</option>
+                        <option value="管理员">管理员</option>
+                    </select>
+                </div>
+
+            </form>
+        <div class="login">
+            <form action="/login.html">
+                <input type="submit" value="注册">
+            </form>
+        </div>
+        <div class="login_up">
+            <form action="/updateID.html">
+                <input type="submit" value="修改密码">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

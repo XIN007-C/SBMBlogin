@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户列表</title>
+    <style>
+    </style>
+</head>
+<body>
+<a href="/index.html"><button>返回登录页面</button></a>
+<div align=center>
+    <h1>感谢您来到这个简陋的系统，爱你(✪ω✪)</h1>
+    <table width="300" border="1">
+        <tr>
+            <th>ID</th>
+            <th>用户账号</th>
+            <th>身份</th>
+        </tr>
+        <tr th:each="user:${userList}" align="center" >
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.jurisdiction}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
